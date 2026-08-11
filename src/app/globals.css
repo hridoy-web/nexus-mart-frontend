@@ -1,26 +1,93 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-lexend), system-ui, -apple-system, sans-serif;
+
+  /* Premium Minimalist Palette */
+  --color-primary: #0F172A;          
+  --color-primary-hover: #1E293B;
+  --color-accent: #2563EB;           
+  --color-accent-hover: #1D4ED8;
+
+  /* Neutral Surface Palette */
+  --color-surface-light: #FAFAFA;
+  --color-surface-dark: #09090B;
+  --color-border-light: #E4E4E7;
+  --color-border-dark: #27272A;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --background: var(--color-surface-light);
+  --foreground: #09090B;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--color-surface-dark);
+    --foreground: #FAFAFC;
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Global Heading Font Adjustment */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+.text-gradient {
+  background: linear-gradient(180deg, #09090B 0%, #71717A 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  .text-gradient {
+    background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.text-gradient-accent {
+  background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-gradient {
+  background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(180deg, #334155 0%, #1E293B 100%);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  transform: translateY(-1px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass-card {
+    background: rgba(24, 24, 27, 0.6);
+    border: 1px solid var(--color-border-dark);
+  }
 }
